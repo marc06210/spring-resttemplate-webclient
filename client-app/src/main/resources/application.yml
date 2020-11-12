@@ -1,0 +1,50 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          client-ok:
+            provider: local
+            client-id: messaging-client
+            client-secret: secret
+            authorization-grant-type: client_credentials
+            scope: message.read, message.write
+          client-ko:
+            provider: local
+            client-id: messaging-client
+            client-secret: secretKO
+            authorization-grant-type: client_credentials
+            scope: message.read, message.write
+          client-mashery:
+            provider: mashery-local
+            client-id: nabla
+            client-secret: nabla
+            authorization-grant-type: client_credentials
+            scope: message.read, message.write
+        provider:
+          local:
+            token-uri: http://localhost:8090/oauth2/token
+          mashery-local:
+            token-uri: https://mashery.local/oauthcust/oauth/token
+          
+
+security:
+  oauth2:
+    client:
+      client-ok:
+        client-id: messaging-client
+        client-secret: secret
+        grant-type: client_credentials
+        access-token-uri: http://localhost:8090/oauth2/token
+        scope: message.read, message.write
+      client-ko:
+        client-id: messaging-client
+        client-secret: secretM
+        grant-type: client_credentials
+        access-token-uri: http://localhost:8090/oauth/token
+        scope: message.read, message.write
+
+logging:
+  level:
+    root: info
+#    org.springframework.security: DEBUG
